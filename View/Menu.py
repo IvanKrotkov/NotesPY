@@ -14,18 +14,19 @@ def GetMenu():
         GetData.write()
         GetMenu()
     elif command == "show":
-        arr_txt = [x for x in os.listdir("Notes") if x.endswith(".json")]
-        print(arr_txt)
         nextMenu()
-    else: 
+    else:
         exit()
 
 
 def nextMenu():
+    arr_txt = [x for x in os.listdir("Notes") if x.endswith(".json")]
+    print(arr_txt)
     command = input("Введите дальнейшее действие: \
                     \nremove - удалить заметку\
                     \nchange - изменить заметку\
-                    \nshow - показать заметку\n")
+                    \nshow - показать заметку \
+                    \nsort - выборка по дате\n")
     if command == "remove":
         title = input("Введите заголовок заметки, которую хотите удалить: ")
         os.remove(f"Notes/{title}.json")
@@ -39,3 +40,7 @@ def nextMenu():
         title = input("Введите заголовок заметки, которую хотите посмотреть: ")
         print(GetData.read(title))
         GetMenu()
+    elif command == "sort":
+        GetData.sort(arr_txt)
+        GetMenu()
+        

@@ -34,3 +34,16 @@ def write():
     writer = Writer.WorkOnJSON(note)
     writer.save_data_in_file(data["title"])
     print("Заметка успешно сохранена")
+
+def sort(arr_txt):
+    notes = []
+    for i in arr_txt:
+        notes.append(read(i[:-5]))
+    sortedList = sorted(notes, key=lambda x: notes[0]["date"])
+    for i in sortedList:
+        printJSOn(i)
+        print("------")
+
+def printJSOn(json):
+    for k,b in json.items():
+        printf(f"{k} - {b}")
