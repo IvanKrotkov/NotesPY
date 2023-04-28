@@ -46,4 +46,4 @@ def sort(arr_txt):
 
 def printJSOn(json):
     for k,b in json.items():
-        printf(f"{k} - {b}")
+        print(f"{k} - {b}")
